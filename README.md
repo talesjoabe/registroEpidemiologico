@@ -1,62 +1,74 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Sobre
+Seleção do edital 003/2021 no LAIS
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instalação
+Baixar o respositório:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+``git clone https://github.com/talesjoabe/registroEpidemiologico.git``
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Acessar o diretório criado e executar:
 
-## Learning Laravel
+``docker-compose run --rm app composer install``
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+``sudo chown -R $USER:$USER ../papermaker``
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+``cp .env.example .env``
 
-## Laravel Sponsors
+``docker-compose up -d``
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Criar a chave:
 
-### Premium Partners
+``docker-compose exec app php artisan key:generate``
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+Para criar o cache das configurações, executar:
 
-## Contributing
+``docker-compose exec app php artisan config:cache``
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Criar o cliente no passport
+``sudo docker-compose exec app php artisan passport:client --personal``
 
-## Code of Conduct
+Gerar uma chave jwt
+``sudo docker-compose exec app php artisan jwt:secret``
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Para finalizar o projeto, devemos criar as tabelas e populá-las em seu estado inicial:
 
-## Security Vulnerabilities
+``docker-compose exec app php artisan migrate --seed``
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## Uso
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Para executar qualquer comando do artisan, php ou outros, executar da seguinte forma:
+
+``docker-compose exec app COMANDO_A_EXECUTAR``
+
+Por exemplo, para acessar o tinker do artisan devemos executar:
+
+``docker-compose exec app php artisan tinker``
+
+Para executar comandos do npm utilizar:
+
+``docker run -v "$PWD":/usr/src/app -w /usr/src/app node:alpine sh -c 'npm COMANDO'``
+
+Por exmeplo, para executar npm install utilize:
+
+``docker run -v "$PWD":/usr/src/app -w /usr/src/app node:alpine sh -c 'npm install'``
+
+
+## Diagrama de Entidade-Relacionamento
+- [Clique aqui para visualizar o ERD](https://github.com/talesjoabe/registroEpidemiologico/blob/dev/ERD.svg)
+
+## Documentação da API
+[Clique aqui para visualizar a documentação da API REST](https://app.swaggerhub.com/apis/registroEpi/registroEpidemiologico-LAIS/1.0.0) 
+
+
+## Dica
+Quando eu estava criando as funcionalidades de transparência, eu não conseguia fazer consulta nas funcionalidades que tem
+faixa etária. No dia que estava ocorrendo o erro, vi uma dica que poderia se resolver em config.database - ao mudar o valor 
+“strict” em mysql para “false”. No momento que eu faço esse commit, o erro não voltou mesmo com strict com o valor true. 
+Caso ao testar essa api você note algum erro, é válido checar se faz sentido ou não fazer essa alteração.
+
+
+
+
