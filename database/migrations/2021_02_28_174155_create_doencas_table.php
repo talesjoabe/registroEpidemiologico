@@ -15,7 +15,7 @@ class CreateDoencasTable extends Migration
     {
         Schema::create('doencas', function (Blueprint $table) {
             $table->id();
-            $table->string('cid',3)->unique;
+            $table->string('cid',3)->unique();
             $table->string('nome');
             $table->softDeletes();
             $table->timestamps();

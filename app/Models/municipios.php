@@ -20,6 +20,6 @@ class municipios extends Model
     }
 
     public function estados(){
-        return $this->hasMany('App\Models\estados');
+        return $this->hasOne('App\Models\estados');
     }
 }

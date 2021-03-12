@@ -15,6 +15,6 @@ class estados extends Model
     ];
 
     public function municipios(){
-        return $this->belongsTo('App\municipios');
+        return $this->belongsToMany('App\municipios');
     }
 }

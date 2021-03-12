@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('cpf',11)->unique();
+            $table->set('sexo',['masculino', 'feminino', 'outro']);
             $table->date('data_de_nascimento');
             $table->string('password');
             $table->unsignedBigInteger('municipio_id');

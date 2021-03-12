@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Auth\AuthController;
 use Dingo\Api\Routing\Router;
 
@@ -11,9 +10,24 @@ use Dingo\Api\Routing\Router;
 $api = app(Router::class);
 
 $callback = function (Router $api) {
+    # Transparencia
+    /**
+     * @OA\Get(
+     *     path="/projects",
+     *     @OA\Response(response="200", description="Display a listing of projects.")
+     * )
+     */
+    $api->get('byDoenca', 'TransparenciaController@byDoenca');
+    $api->get('byDoenca_UF', 'TransparenciaController@byDoenca_UF');
+    $api->get('byDoenca_AgeGroup', 'TransparenciaController@byDoenca_AgeGroup');
+    $api->get('byDoenca_Gender', 'TransparenciaController@byDoenca_Gender');
+    $api->get('group', 'TransparenciaController@group');
+
+
     $api->post('login', 'AuthController@login');
     $api->post('register', 'Auth\RegisterController@register');
     $api->group(['middleware' => 'api.auth'], function (Router $api) {
+        # Gestao
         $api->post('doencas', 'DoencasController@store');
         $api->put('doencas/{doenca}', 'DoencasController@update');
         $api->get('doencas', 'DoencasController@index');
@@ -35,6 +49,8 @@ $callback = function (Router $api) {
         $api->post('users', 'UsersController@store');
         $api->put('users/{user}', 'UsersController@update');
         $api->get('users', 'UsersController@index');
+        $api->get('users/role', 'UsersController@getUsersRole');
+
         $api->get('users/{user}', 'UsersController@show');
         $api->delete('users/{user}', 'UsersController@destroy');
 
@@ -45,6 +61,9 @@ $callback = function (Router $api) {
         $api->get('usuario_doencas', 'UsuarioDoencasController@index');
         $api->get('usuario_doencas/{usuario_doenca}', 'UsuarioDoencasController@show');
         $api->delete('usuario_doencas/{usuario_doenca}', 'UsuarioDoencasController@destroy');
+
+        Route::resource('roles', RoleController::class);
+
     });
 };
 

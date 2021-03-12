@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="registroepidemiologico@localhost" uuid="7525e631-f356-4402-a4e1-76bc5d50aa36">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3307/registroepidemiologico</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="registroepidemiologico@localhost [2]" uuid="21adffb9-34bb-462d-bf00-4fbcb1381711">
+    <data-source source="LOCAL" name="registroepidemiologico@localhost" uuid="b308fe50-2535-4bdf-866b-61bd5ca68e26">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

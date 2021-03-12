@@ -18,5 +18,10 @@ class EstadosSeeder extends Seeder
             'sigla' => 'RN',
             'nome' => 'Rio Grande do Norte',
         ]);
+
+        estados::create([
+            'sigla' => 'CE',
+            'nome' => 'Ceará',
+        ]);
     }
 }

@@ -10,14 +10,10 @@ class usuario_doencas extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const STATUS_TRATADO                = 0;
-    const STATUS_TRATANDO             = 1;
-    const STATUS_CURADO               = 2;
-    const STATUSES = [
-        self::STATUS_TRATADO                 => 0,
-        self::STATUS_TRATANDO            => 1,
-        self::STATUS_CURADO               => 2,
-    ];
+    // Tratado = 0
+    // Tratando = 1
+    // Curado = 2
+
 
     protected $fillable = [
         'usuario_id', 'doenca_id', 'comentarios', 'status'
@@ -26,10 +22,10 @@ class usuario_doencas extends Model
     protected $dates = ['deleted_at'];
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\User', 'usuario_id');
     }
 
     public function doencas(){
-        return $this->belongsTo('App\doencas');
+        return $this->hasMany('App\doencas');
     }
 }

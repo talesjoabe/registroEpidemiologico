@@ -18,7 +18,7 @@ class doencas extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function usuario_doenca(){
-        return $this->hasMany('App\Models\usuario_doenca');
+    public function usuario_doencas(){
+        return $this->belongsToMany('App\Models\usuario_doencas');
     }
 }

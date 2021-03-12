@@ -1,0 +1,288 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API da aplicação Registro Epidemiológico - Seleção LAIS",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/doencas": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\DoencasController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostra a lista de todas as doenças"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\DoencasController::store",
+                "responses": {
+                    "200": {
+                        "description": "Cria uma doença"
+                    }
+                }
+            }
+        },
+        "/doencas/{id}": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\DoencasController::show",
+                "responses": {
+                    "200": {
+                        "description": "Mostra uma doença especifica"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\DoencasController::update",
+                "responses": {
+                    "200": {
+                        "description": "Modifica um elemento de uma doença especifica"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "App\\Http\\Controllers\\DoencasController::destroy",
+                "responses": {
+                    "200": {
+                        "description": "Deleta uma doença especifica"
+                    }
+                }
+            }
+        },
+        "/estados": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\EstadosController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostra a lista de todos os estados"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\EstadosController::store",
+                "responses": {
+                    "200": {
+                        "description": "Cria um estado"
+                    }
+                }
+            }
+        },
+        "/estados/{id}": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\EstadosController::show",
+                "responses": {
+                    "200": {
+                        "description": "Mostra um estado especifico"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\EstadosController::update",
+                "responses": {
+                    "200": {
+                        "description": "Modifica um elemento de um estado especifica"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "App\\Http\\Controllers\\EstadosController::destroy",
+                "responses": {
+                    "200": {
+                        "description": "Deleta um estado especifico"
+                    }
+                }
+            }
+        },
+        "/municipios": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\MunicipiosController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostra a lista de todas as municipios"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\MunicipiosController::store",
+                "responses": {
+                    "200": {
+                        "description": "Cria um municipio"
+                    }
+                }
+            }
+        },
+        "/municipios/{id}": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\MunicipiosController::show",
+                "responses": {
+                    "200": {
+                        "description": "Mostra um municipio especifico"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\MunicipiosController::update",
+                "responses": {
+                    "200": {
+                        "description": "Modifica um elemento de um municipio especifico"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "App\\Http\\Controllers\\MunicipiosController::destroy",
+                "responses": {
+                    "200": {
+                        "description": "Deleta um municipio especifico"
+                    }
+                }
+            }
+        },
+        "/roles": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\RoleController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostra todos os perfis"
+                    }
+                }
+            }
+        },
+        "/roles/{id}": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\RoleController::show",
+                "responses": {
+                    "200": {
+                        "description": "Mostra um perfil especifico"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\RoleController::store",
+                "responses": {
+                    "200": {
+                        "description": "Cria um perfil"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "App\\Http\\Controllers\\RoleController::destroy",
+                "responses": {
+                    "200": {
+                        "description": "Deleta um perfil especifico"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\UsersController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostra a lista de todos as users"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\UsersController::store",
+                "responses": {
+                    "200": {
+                        "description": "Cria um user"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\UsersController::show",
+                "responses": {
+                    "200": {
+                        "description": "Mostra um user especifico"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\UsersController::update",
+                "responses": {
+                    "200": {
+                        "description": "Modifica um elemento de um user especifico"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "App\\Http\\Controllers\\UsersController::destroy",
+                "responses": {
+                    "200": {
+                        "description": "Deleta um user especifico"
+                    }
+                }
+            }
+        },
+        "/users/{user}/date_group": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\UsersController::getGrupo",
+                "responses": {
+                    "200": {
+                        "description": "Mostra a qual faixa etária o usuário pertence"
+                    }
+                }
+            }
+        },
+        "users/role": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\UsersController::getUsersRole",
+                "responses": {
+                    "200": {
+                        "description": "Mostra quais usuários tem o perfil Administrador"
+                    }
+                }
+            }
+        },
+        "/usuario_doencas": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\UsuarioDoencasController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostra a lista de todas as doenças"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\UsuarioDoencasController::store",
+                "responses": {
+                    "200": {
+                        "description": "Cria uma linha na tabela usuário_doença"
+                    }
+                }
+            }
+        },
+        "/usuario_doencas/{id}": {
+            "get": {
+                "operationId": "App\\Http\\Controllers\\UsuarioDoencasController::show",
+                "responses": {
+                    "200": {
+                        "description": "Mostra uma linha na tabela usuário_doença especifica"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "App\\Http\\Controllers\\UsuarioDoencasController::update",
+                "responses": {
+                    "200": {
+                        "description": "Modifica um elemento de uma linha na tabela usuário_doença especifica"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "App\\Http\\Controllers\\UsuarioDoencasController::destroy",
+                "responses": {
+                    "200": {
+                        "description": "Deleta uma linha na tabela usuário_doença especifica"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

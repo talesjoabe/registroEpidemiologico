@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Passport\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable, SoftDeletes, HasApiTokens;
+    use HasFactory, Notifiable, SoftDeletes, HasApiTokens, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +23,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'cpf',
+        'sexo',
         'data_de_nascimento',
         'municipio_id',
         'password',
@@ -39,12 +41,12 @@ class User extends Authenticatable implements JWTSubject
 
     protected $dates = ['deleted_at'];
 
-    public function usuario_doenca(){
-        return $this->hasMany('App\Models\usuario_doenca');
+    public function usuario_doencas(){
+        return $this->belongsToMany('App\Models\usuario_doenca');
     }
 
     public function municipios(){
-        return $this->hasMany('App\Models\municipios');
+        return $this->hasOne('App\Models\municipios');
     }
 
     /**

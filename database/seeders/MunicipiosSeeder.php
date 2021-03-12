@@ -19,5 +19,17 @@ class MunicipiosSeeder extends Seeder
             'codigo' => '08003',
             'nome' => 'Mossoró',
         ]);
+
+        municipios::create([
+            'estado_id' => 1,
+            'codigo' => '08004',
+            'nome' => 'Natal',
+        ]);
+
+        municipios::create([
+            'estado_id' => 2,
+            'codigo' => '08005',
+            'nome' => 'Fortaleza',
+        ]);
     }
 }
