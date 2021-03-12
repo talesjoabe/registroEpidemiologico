@@ -86,7 +86,7 @@ class RoleController extends Controller
         return response()->json($rolePermissions);
     }
 
-    
+
     public function update(Request $request, $id)
     {
 
